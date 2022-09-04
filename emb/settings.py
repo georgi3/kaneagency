@@ -43,7 +43,7 @@ MIDDLEWARE = [
 ]
 # SESSIONS
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
-SESSION_COOKIE_AGE = 10 * 60  # in seconds
+SESSION_COOKIE_AGE = 30 * 60  # in seconds
 
 ROOT_URLCONF = 'emb.urls'
 

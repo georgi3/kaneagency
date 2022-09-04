@@ -119,7 +119,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # LOCAL SETTINGS
 try:
-    from .local_settings import *
+    from local_settings import *
 except ImportError:
     # SECURITY WARNING: keep the secret key used in production secret!
     ALLOWED_HOSTS = []

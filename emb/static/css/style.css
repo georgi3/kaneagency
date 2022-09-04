@@ -55,7 +55,24 @@
   background-position: center !important;
   background-repeat: no-repeat !important;
   /*background-size: cover !important;*/
-
+}
+@media(max-width: 1200px) {
+    /*PARALLAX*/
+    .parallax-kane-didot {
+      display: none;
+      min-height: 0;
+      width: 0;
+    }
+    .parallax-kane-flip{
+      display: none;
+      min-height: 0;
+      width: 0;
+    }
+    .parallax-bline{
+      display: none;
+      min-height: 0;
+      width: 0;
+    }
 }
 /*Animation*/
 .service-box{

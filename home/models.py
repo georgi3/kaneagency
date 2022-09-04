@@ -26,7 +26,7 @@ class Content(models.Model):
     latest_projects_text = models.TextField('Text for latest projects', help_text="Text underneath 'Latest Projects'"
                                                                                   " (home page)", blank=True, null=True)
     twitter_link = models.URLField('Twitter Link', help_text='Contact info', null=True, blank=True)
-    fb_link = models.URLField('Facebook Link', help_text='Contact Info', blank=True, null=True),
+    fb_link = models.URLField('Facebook Link', help_text='Contact Info', blank=True, null=True)
     ig_link = models.URLField('Instagram Link', help_text='Contact Info', blank=True, null=True)
     linkedin_link = models.URLField('LinkedIn Link', help_text='Contact Info', blank=True, null=True)
     footer_desc_par_1 = models.CharField('Footer Short Description 1', help_text='Paragraph 1, Max one sentence',

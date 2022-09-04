@@ -3,6 +3,7 @@ venv/
 .idea/*
 todos.py
 emb/.env
+emb/local_settings.py
 NOTES.md
 # Django #
 *.log

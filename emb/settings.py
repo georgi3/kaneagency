@@ -138,9 +138,39 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # REGULAR_EMAIL = os.environ['REGULAR_EMAIL']
 
 # LOCAL SETTINGS
-try:
-    from local_settings import *
-except ImportError as err:
-    print(f'ERROR: {err}')
-    pass
+# try:
+#     from local_settings import *
+# except ImportError as err:
+#     print(f'ERROR: {err}')
+#     pass
 
+
+
+# LOCAL SETTINGS
+# SECURITY WARNING: keep the secret key used in production secret!
+from dotenv import load_dotenv
+load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
+ALLOWED_HOSTS = [os.environ['IP_ADDRESS']]
+SECRET_KEY = os.environ['SECRET_KEY']
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.environ['DEBUG']
+# DEBUG = False
+# Database
+# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': os.environ['ENGINE'],
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
+        'HOST': os.environ['DB_HOST'],
+    }
+}
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ['EMAIL_HOST']
+EMAIL_PORT = os.environ['EMAIL_PORT']
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+EMAIL_USE_SSL = os.environ['EMAIL_USE_SSL']
+DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
+REGULAR_EMAIL = os.environ['REGULAR_EMAIL']

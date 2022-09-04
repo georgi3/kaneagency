@@ -112,7 +112,7 @@
                                     <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{ content.phone_2 }}">{{ content.phone_2 }}</a></li>
                                 {% endif %}
                                 {% if content.address or content.city_country %}
-                                    <li><i class="fa fa-map-marker" aria-hidden="true"></i><p>{{ content.address }}, {{ content.city_country }}</p></li>
+                                    <li><i class="fa fa-map-marker" aria-hidden="true"></i><p>{% if content.address %}{{ content.address }},{% endif %} {% if content.city_country %}{{ content.city_country }}{% endif %}</p></li>
                                 {% endif %}
                             </ul>
                         {% endfor %}

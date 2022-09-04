@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div id="hero" class="hero overlay">
+        <div class="hero-content">
+            <div class="hero-text square">
+                <h1>K A N E</h1>
+                {% if contents %}
+                    {% for content in contents %}
+                        {% if content.intro_text %}
+                            <p>{{ content.intro_text | safe }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <a href="#services" class="btn btn-border">Learn more</a>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+{#    <div class="parallax-kane"></div>#}
+    <div class="parallax-kane-didot"></div>
+{#    <div class="parallax-kane-didot-sm"></div>#}
+
+
+
+        <section class="site-section section-services gray-bg text-center" id="services">
+            <div class="container">
+                <h2 class="heading-separator">Services</h2>
+                {% if contents %}
+                    {% for content in contents %}
+                        {% if content.services_text %}
+                            <p class="subheading-text">{{ content.services_text | safe}}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <div class="row">
+                    {% if services %}
+                        {% for service in services %}
+                        <div class="col-md-3 col-xs-6">
+                            <div class="service">
+                                <img src="{{ service.icon.url }}" alt="{{ service.service_name }} Icon">
+                                <h3 class="service-title">{{ service.service_name }}</h3>
+                                <p class="service-info">{{ service.short_description }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <a href="{% url 'home:services' %}" class="btn mb-10">Learn More</a>
+            </div>
+        </section><!-- /.section-services -->
+        <div class="parallax-kane-flip"></div>
+
+
+
+
+        <section class="site-section section-portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="heading-separator">Latest Projects</h2>
+                    {% if contents %}
+                        {% for content in contents %}
+                            {% if content.latest_projects_text %}
+                                <p class="subheading-text">{{ content.latest_projects_text | safe }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="row">
+                    {% if portfolio_items %}
+                        {% for portfolio_item in portfolio_items %}
+                            <div class="col-lg-3 col-md-4 col-xs-6">
+                                <div class="portfolio-item">
+                                    {% if portfolio_item.img_1 %}
+                                        <img src="{{ portfolio_item.img_1.url }}" class="img-res"
+                                         alt="{{ portfolio_item.title }} Image">
+                                    {% endif %}
+                                    <h4 class="portfolio-item-title">{{ portfolio_item.title }}</h4>
+                                    <a href="{% url 'home:portfolio_item' pk=portfolio_item.id %}">
+                                        <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                </div><!-- /.portfolio-item -->
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+        <div class="parallax-bline"></div>
+
+    </main><!-- /#main -->
+{% endblock %}

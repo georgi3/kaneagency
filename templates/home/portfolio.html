@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div id="hero" class="hero overlay subpage-hero portfolio-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Portfolio</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+                  <li class="breadcrumb-item active">Portfolio</li>
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+    {% if portfolio_items %}
+    <main id="main" class="site-main">
+        <section class="site-section subpage-site-section section-portfolio">
+            <div class="container">
+                <ul class="portfolio-sorting list-inline text-center">
+                {% if unique_services %}
+                        <li><a href="#" class="btn btn-border mb-10 active" data-group="all">All</a></li>
+                    {% for service in unique_services %}
+                        <li><a href="#" class="btn btn-border mb-10" data-group="{{ service }}">{{ service }}</a></li>
+                    {% endfor %}
+                {% endif %}
+                </ul><!-- /.portfolio-sorting  -->
+                <div id="grid" class="row">
+                    {% if portfolio_items %}
+                        {% for portfolio_item in portfolio_items %}
+                            <div class="col-lg-3 col-md-4 col-xs-6" data-groups='["{{ portfolio_item.service_category }}"]'>
+                                <div class="portfolio-item">
+                                    {% if portfolio_item.img_1 %}
+                                        <img src="{{ portfolio_item.img_1.url }}" class="img-res"
+                                         alt="{{ portfolio_item.title }} Image">
+                                    {% endif %}
+                                    <h4 class="portfolio-item-title">{{ portfolio_item.title }}</h4>
+                                    <a href="{% url 'home:portfolio_item' pk=portfolio_item.id %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                </div><!-- /.portfolio-item -->
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="text-center">
+                    <a class="btn btn-border mb-10" href="#" id="loadMore">Load More</a>
+                </div>
+            </div>
+        </section><!-- /.section-portfolio -->
+    </main><!-- /#main -->
+    {% endif %}
+{% endblock %}

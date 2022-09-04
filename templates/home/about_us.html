@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div id="hero" class="hero overlay subpage-hero about-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>About</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+                  <li class="breadcrumb-item active">About</li>
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        <section class="site-section subpage-site-section section-contact-us">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <h2>About Kane</h2>
+                        {% if contents %}
+                            {% for content in contents %}
+                                {% if content.intro_text %}
+                                    <p class="about-description">{{ content.about_par_1 | safe }}</p>
+                                    <p class="about-description">{{ content.about_par_2 | safe }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="contact-info">
+                            <h2>Contact information</h2>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    {% if contents %}
+                                        {% for content in contents %}
+                                            {% if content.address or content.city_country %}
+                                                <h3>Address</h3>
+                                                <ul class="list-unstyled">
+                                                    <li>{{ content.city_country }}</li>
+                                                    <li>{{ content.address }}</li>
+                                                </ul>
+                                            {% endif %}
+                                            {% if content.email %}
+                                                <h3>E-mail</h3>
+                                                <a href="mailto:{{ content.email }}" target="_blank">{{ content.email }}</a>
+                                            {% endif %}
+                                            {% if content.phone_1 %}
+                                                <h3>Phone</h3>
+                                                <a href="tel:{{ content.phone_1 }}" target="_blank">{{ content.phone_1 }}</a>
+                                            {% endif %}
+                                            {% if content.about_par_2 %}
+                                                <h3>Phone</h3>
+                                                <a href="tel:{{ content.phone_2 }}" target="_blank">{{ content.phone_2 }}</a>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div><!-- /.contact-info -->
+                    </div>
+                </div>
+            </div>
+            
+        </section><!-- /.section-contact-us -->
+
+{#        <section id="map" class="section-map"></section><!-- /.section-map -->#}
+
+    </main><!-- /#main -->
+
+{% endblock %}

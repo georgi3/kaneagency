@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="hero-content"></div>
+    <div class="hero-text">
+        <h3>ERROR 500: Internal Server Error</h3>
+        <p>Sorry for inconvenience, try again later...</p>
+        <img src="{% static 'img/sad-face.svg' %}" alt="Sad Face Img">
+    </div>
+{% endblock %}

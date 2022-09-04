@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="hero-content"></div>
+    <div class="hero-text">
+        <h3>ERROR 404: Page Not Found</h3>
+        <p>Looks like you followed a bad link...</p>
+        <img src="{% static 'img/sad-face.svg' %}" alt="Sad Face Img">
+    </div>
+{% endblock %}

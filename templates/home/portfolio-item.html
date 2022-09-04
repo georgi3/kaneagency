@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div id="hero" class="hero overlay subpage-hero portfolio-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Project Name</h1>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+                  <li class="breadcrumb-item"><a href="{% url 'home:portfolio' %}">Portfolio</a></li>
+                    {% if portfolio_item %}
+                        {% for item in portfolio_item %}
+                  <li class="breadcrumb-item active">{{ item.title }}</li>
+                        {% endfor %}
+                    {% endif %}
+                </ol>
+            </div><!-- /.hero-text -->
+        </div><!-- /.hero-content -->
+    </div><!-- /.hero -->
+
+    <main id="main" class="site-main">
+
+        {% if portfolio_item %}
+            {% for item in portfolio_item %}
+        <section class="site-section subpage-site-section section-project">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        {% if item.img_1 %}
+                        <div class="project-img">
+                            <img src="{{ item.img_1.url }}" class="img-res" alt="">
+                        </div>
+                        {% endif %}
+                        {% if item.img_2 %}
+                        <div class="project-img">
+                            <img src="{{ item.img_2.url }}" class="img-res" alt="">
+                        </div>
+                        {% endif %}
+                        {% if item.img_3 %}
+                        <div class="project-img">
+                            <img src="{{ item.img_3.url }}" class="img-res" alt="">
+                        </div>
+                        {% endif %}
+                        {% if item.img_4 %}
+                        <div class="project-img">
+                            <img src="{{ item.img_4.url }}" class="img-res" alt="">
+                        </div>
+                        {% endif %}
+                        {% if item.img_5 %}
+                        <div class="project-img">
+                            <img src="{{ item.img_5.url }}" class="img-res" alt="">
+                        </div>
+                        {% endif %}
+                    </div>
+                    <aside class="col-md-4">
+                        <div class="project-info">
+                            <h5>{{ item.title }}</h5>
+                            <div class="project-date-category">
+                                {% if item.date %}
+                                    <p><span>Date:</span> {{ item.date }}</p>
+                                {% endif %}
+                                <p><span>Category:</span> {{ item.service_category }}</p>
+                            </div>
+                            {% if item.description_1 %}
+                                <p class="project-description">{{ item.description_1 }}</p>
+                            {% endif %}
+                            {% if item.description_2 %}
+                                <p class="project-description">{{ item.description_2 }}</p>
+                            {% endif %}
+                            {% if item.description_3 %}
+                                <p class="project-description">{{ item.description_3 }}</p>
+                            {% endif %}
+                            {% if item.press_link %}
+                                <a href="{{ item.press_link }}" class="btn btn-border mb-10">Press Coverage</a>
+                            {% endif %}
+                            {% if item.fb_link or item.ig_link or item.twitter_link or item.linkedin_link%}
+                                <div class="project-date-category">
+                                <p><span>Social Media Coverage:</span></p>
+                                    <div class="social-links">
+                                        {% if item.twitter_link %}
+                                        <a class="twitter-bg" href="{{ item.twitter_link }}"><i class="fa fa-twitter"></i></a>
+                                        {% endif %}
+                                        {% if item.ig_link %}
+                                        <a class="instagram" href="{{ item.ig_link }}"><i class="fa fa-instagram"></i></a>
+                                        {% endif %}
+                                        {% if item.fb_link %}
+                                        <a class="facebook-bg" href="{{ item.fb_link }}"><i class="fa fa-facebook"></i></a>
+                                        {% endif %}
+                                        {% if item.linkedin_link %}
+                                        <a class="linkedin-bg" href="{{ item.linkedin_link }}"><i class="fa fa-linkedin"></i></a>
+                                        {% endif %}
+                                    </div><!-- /.social-links -->
+                                </div>
+                            {% endif %}
+                            
+                        </div><!-- /.project-description -->
+                    </aside>
+                </div>
+            </div>
+        </section><!-- /.section-project -->
+            {% endfor %}
+        {% endif %}
+
+
+        <section class="site-section subpage-site-section section-related-projects">
+            <div class="container">
+                {% if related_projects %}
+                <div class="text-left">
+                    <h2>Related Projects</h2>
+                </div>
+                    {% for project in related_projects %}
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 col-xs-6">
+                                <div class="portfolio-item">
+                                    {% if project.img_1 %}
+                                        <img src="{{ project.img_1.url }}" class="img-res" alt="{{ project.title }} Image">
+                                    {% endif %}
+                                    <h4 class="portfolio-item-title">{{ project.title }}</h4>
+                                    <a href="{% url 'home:portfolio_item' pk=project.id %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </section>
+
+    </main>
+{% endblock %}

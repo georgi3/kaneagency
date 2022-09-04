@@ -12,7 +12,6 @@
     <title>Kane Agency</title>
 
     <meta name="description" content="">
-    <meta name="author" content="">
     <meta name="keywords" content="">
 
     <!-- Mobile Specific Metas
@@ -145,16 +144,16 @@
                         {% if contents %}
                             {% for content in contents %}
                                 {% if content.twitter_link %}
-                                <a class="twitter-bg" href="{{ content.twitter_link }}"><i class="fa fa-twitter"></i></a>
+                                <a class="twitter-bg" target="_blank" href="{{ content.twitter_link }}"><i class="fa fa-twitter"></i></a>
                                 {% endif %}
                                 {% if content.fb_link %}
-                                <a class="facebook-bg" href="{{ content.fb_link }}"><i class="fa fa-facebook"></i></a>
+                                <a class="facebook-bg" target="_blank" href="{{ content.fb_link }}"><i class="fa fa-facebook"></i></a>
                                 {% endif %}
                                 {% if content.ig_link %}
-                                <a class="instagram" href="{{ content.ig_link }}"><i class="fa fa-instagram"></i></a>
+                                <a class="instagram" target="_blank" href="{{ content.ig_link }}"><i class="fa fa-instagram"></i></a>
                                 {% endif %}
                                 {% if content.linkedin_link %}
-                                <a class="linkedin-bg" href="{{ content.linkedin_link }}"><i class="fa fa-linkedin"></i></a>
+                                <a class="linkedin-bg" target="_blank" href="{{ content.linkedin_link }}"><i class="fa fa-linkedin"></i></a>
                                 {% endif %}
                             {% endfor %}
                         {% endif %}

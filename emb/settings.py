@@ -150,7 +150,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # SECURITY WARNING: keep the secret key used in production secret!
 from dotenv import load_dotenv
 load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
-ALLOWED_HOSTS = [os.environ['IP_ADDRESS']]
+ALLOWED_HOSTS = [os.environ['IP_ADDRESS'], os.environ['DOMAIN'], os.environ['WWW_DOMAIN']]
 SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG']

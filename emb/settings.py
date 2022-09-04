@@ -116,33 +116,31 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# # SECURITY WARNING: keep the secret key used in production secret!
-# ALLOWED_HOSTS = []
-# SECRET_KEY = 'slknflksdnfldnfls'
-# DEBUG = True
-# # Database
-# # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = os.environ['EMAIL_HOST']
-# EMAIL_PORT = os.environ['EMAIL_PORT']
-# EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-# EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-# EMAIL_USE_SSL = os.environ['EMAIL_USE_SSL']
-# DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
-# REGULAR_EMAIL = os.environ['REGULAR_EMAIL']
-
-# LOCAL SETTINGS
+# # LOCAL SETTINGS
 # try:
 #     from local_settings import *
 # except ImportError as err:
 #     print(f'ERROR: {err}')
-#     pass
+#     # # SECURITY WARNING: keep the secret key used in production secret!
+#     # ALLOWED_HOSTS = []
+#     # SECRET_KEY = 'slknflksdnfldnfls'
+#     # DEBUG = True
+#     # # Database
+#     # # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+#     # DATABASES = {
+#     #     'default': {
+#     #         'ENGINE': 'django.db.backends.sqlite3',
+#     #         'NAME': BASE_DIR / 'db.sqlite3',
+#     #     }
+#     # }
+#     # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#     # EMAIL_HOST = os.environ['EMAIL_HOST']
+#     # EMAIL_PORT = os.environ['EMAIL_PORT']
+#     # EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+#     # EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+#     # EMAIL_USE_SSL = os.environ['EMAIL_USE_SSL']
+#     # DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
+#     # REGULAR_EMAIL = os.environ['REGULAR_EMAIL']
 
 
 
@@ -154,7 +152,6 @@ ALLOWED_HOSTS = [os.environ['IP_ADDRESS'], os.environ['DOMAIN'], os.environ['WWW
 SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG']
-# DEBUG = False
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 DATABASES = {

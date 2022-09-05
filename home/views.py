@@ -59,7 +59,7 @@ def portfolio_item(request, pk):
 
 def services(request):
     if request.method == 'POST':
-        if int(request.session.get('filed_inquiry', 0)) >= 30:
+        if int(request.session.get('filed_inquiry', 0)) >= 3:
             messages.error(request, 'You have already submitted an inquiry! For more, please, reach out via e-mail.')
         else:
             inquiry_date = datetime.datetime.now(pytz.timezone('US/Eastern'))

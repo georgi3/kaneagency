@@ -25,7 +25,14 @@
     - PORTFOLIO
     - PORTFOLIO ITEM
 */
-
+/*Svg Service Img*/
+.service-svg{
+    width: 100%;
+}
+img{
+    object-fit: cover;
+    width: 25%;
+}
 /*Link Portfolio*/
 .portfolio-link-description{
     text-decoration: underline;

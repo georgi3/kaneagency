@@ -26,12 +26,9 @@
     - PORTFOLIO ITEM
 */
 /*Svg Service Img*/
-.service-svg{
-    width: 100%;
-}
 img{
     object-fit: cover;
-    width: 25%;
+    height: 75px;
 }
 /*Link Portfolio*/
 .portfolio-link-description{

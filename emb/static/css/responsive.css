@@ -431,7 +431,9 @@
 	    margin-top: 20px;
 		margin-bottom: 40px;
 	}
-
+	.contact-header-link{
+		display: none!important;
+	}
 	.service-title {
 		margin: 15px 0 5px;
 	}

@@ -62,13 +62,13 @@
                                 <p><span>Category:</span> {{ item.service_category }}</p>
                             </div>
                             {% if item.description_1 %}
-                                <p class="project-description">{{ item.description_1 }}</p>
+                                <p class="project-description">{{ item.description_1 | safe}}</p>
                             {% endif %}
                             {% if item.description_2 %}
-                                <p class="project-description">{{ item.description_2 }}</p>
+                                <p class="project-description">{{ item.description_2 | safe}}</p>
                             {% endif %}
                             {% if item.description_3 %}
-                                <p class="project-description">{{ item.description_3 }}</p>
+                                <p class="project-description">{{ item.description_3 | safe}}</p>
                             {% endif %}
                             {% if item.press_link %}
                                 <a href="{{ item.press_link }}" class="btn btn-border mb-10">Press Coverage</a>

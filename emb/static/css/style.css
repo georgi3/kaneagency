@@ -26,6 +26,13 @@
     - PORTFOLIO ITEM
 */
 
+/*Link Portfolio*/
+.portfolio-link-description{
+    text-decoration: underline;
+}
+.portfolio-link-description:hover{
+    color: black;
+}
 /* ========================= CUSTOM Additions ========================= */
 /*PARALLAX*/
 .parallax-kane-didot {
@@ -888,6 +895,9 @@ html, body {
 }
 
 .hero-text {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
     max-width: 890px;
     font-family: Didot, sans-serif;
     background-color: transparent;
@@ -896,6 +906,14 @@ html, body {
     margin: 0 auto;
     /*padding: 0 15px;*/
     text-align: center;
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 .hero-text.square{
     background-color: rgba(0, 0, 0, 0.55);

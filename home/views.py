@@ -101,7 +101,7 @@ def services(request):
             prev_value = int(request.session.get('filed_inquiry', 0))
             request.session['filed_inquiry'] = prev_value + 1
 
-    services = Services.objects.filter(hide=False)
+    services = Services.objects.filter(hide=False)[::-1]
     content = Content.objects.filter(hide_info=False)
     context = {
         'services': services,

@@ -16,7 +16,8 @@
     <main id="main" class="site-main">
         {% if services %}
             {% for service in services %}
-                <div class="service-box" id="{{ service.service_name }}-id">
+                <div id="{{ service.service_name }}-id"></div><div></div>
+                <div class="service-box">
                     {% if forloop.counter|divisibleby:2 %}
                         <article class="flex-columns">
                     {% else %}

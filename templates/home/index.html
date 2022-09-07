@@ -18,11 +18,7 @@
     </div><!-- /.hero -->
 
     <main id="main" class="site-main">
-{#    <div class="parallax-kane"></div>#}
     <div class="parallax-kane-didot"></div>
-{#    <div class="parallax-kane-didot-sm"></div>#}
-
-
 
         <section class="site-section section-services gray-bg text-center" id="services">
             <div class="container">
@@ -39,7 +35,7 @@
                         {% for service in services %}
                         <div class="col-md-3 col-xs-6">
                             <div class="service">
-                                <img src="{{ service.icon.url }}" alt="{{ service.service_name }} Icon">
+                                <a href="{% url 'home:services' %}#{{ service.service_name }}-id"><img src="{{ service.icon.url }}" alt="{{ service.service_name }} Icon"></a>
                                 <h3 class="service-title">{{ service.service_name }}</h3>
                                 <p class="service-info">{{ service.short_description }}</p>
                             </div>

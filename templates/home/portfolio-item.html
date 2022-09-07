@@ -4,7 +4,11 @@
     <div id="hero" class="hero overlay subpage-hero portfolio-hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Project Name</h1>
+		{% if portfolio_item %}
+			{% for item in portfolio_item %}
+		                <h1>{{ item.title }}</h1>
+			{% endfor %}
+		{% endif %}
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
                   <li class="breadcrumb-item"><a href="{% url 'home:portfolio' %}">Portfolio</a></li>

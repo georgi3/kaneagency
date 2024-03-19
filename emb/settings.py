@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+from configparser import ConfigParser
+
+config = ConfigParser()
+config.read('config.ini')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,6 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Application definition
 
 INSTALLED_APPS = [
+    'tinymce',
     'home.apps.HomeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -84,7 +89,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -96,6 +100,34 @@ USE_I18N = True
 
 USE_TZ = True
 
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 360,
+    'width': 1120,
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 20,
+    'selector': 'textarea',
+    'theme': 'silver',
+    'plugins': '''
+            textcolor save link image media preview codesample contextmenu
+            table code lists fullscreen insertdatetime nonbreaking
+            contextmenu directionality searchreplace wordcount visualblocks
+            visualchars code fullscreen autolink lists charmap print hr
+            anchor pagebreak
+            ''',
+    'toolbar1': '''
+            fullscreen preview bold italic underline | fontselect,
+            fontsizeselect | forecolor backcolor | alignleft alignright |
+            aligncenter alignjustify | indent outdent | bullist numlist table |
+            | link image media | codesample |
+            ''',
+    'toolbar2': '''
+            visualblocks visualchars |
+            charmap hr pagebreak nonbreaking anchor | code |
+            ''',
+    'contextmenu': 'formats | link image',
+    'menubar': True,
+    'statusbar': True,
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -110,66 +142,45 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# # LOCAL SETTINGS
-# try:
-#     from local_settings import *
-# except ImportError as err:
-#     print(f'ERROR: {err}')
-#     # SECURITY WARNING: keep the secret key used in production secret!
-#     from dotenv import load_dotenv
-#     load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
-#     ALLOWED_HOSTS = []
-#     SECRET_KEY = 'slknflksdnfldnfls'
-#     DEBUG = True
-#     # Database
-#     # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-#     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#     EMAIL_HOST = os.environ['EMAIL_HOST']
-#     EMAIL_PORT = os.environ['EMAIL_PORT']
-#     EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-#     EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-#     EMAIL_USE_SSL = os.environ['EMAIL_USE_SSL']
-#     DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
-#     REGULAR_EMAIL = os.environ['REGULAR_EMAIL']
-
-
+# Mail
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config.get('email', 'EMAIL_HOST')
+EMAIL_PORT = config.get('email', 'EMAIL_PORT')
+EMAIL_HOST_USER = config.get('email', 'EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config.get('email', 'EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = config.get('email', 'EMAIL_USE_SSL')
+DEFAULT_FROM_EMAIL = config.get('email', 'DEFAULT_FROM_EMAIL')
+REGULAR_EMAIL = config.get('email', 'REGULAR_EMAIL')
 
 # LOCAL SETTINGS
 # SECURITY WARNING: keep the secret key used in production secret!
-from dotenv import load_dotenv
-load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
-ALLOWED_HOSTS = [os.environ['DOMAIN'], os.environ['WWW_DOMAIN']]
-SECRET_KEY = os.environ['SECRET_KEY']
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG']
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': os.environ['ENGINE'],
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PASSWORD'],
-        'HOST': os.environ['DB_HOST'],
+DEBUG = config.get('django', 'DEBUG')
+if DEBUG:
+    ALLOWED_HOSTS = []
+    SECRET_KEY = 'slknflksdnfldnfls'
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.environ['EMAIL_HOST']
-EMAIL_PORT = os.environ['EMAIL_PORT']
-EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-EMAIL_USE_SSL = os.environ['EMAIL_USE_SSL']
-DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
-REGULAR_EMAIL = os.environ['REGULAR_EMAIL']
+else:
+    ALLOWED_HOSTS = [config.get('django', 'DOMAIN'), config.get('django', 'WWW_DOMAIN')]
+    SECRET_KEY = config.get('django', 'SECRET_KEY')
+    # SECURITY WARNING: don't run with debug turned on in production!
+    # Database
+    # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+    DATABASES = {
+        'default': {
+            'ENGINE': config.get('database', 'ENGINE'),
+            'NAME': config.get('database', 'DB_NAME'),
+            'USER': config.get('database', 'DB_USER'),
+            'PASSWORD': config.get('database', 'DB_PASSWORD'),
+            'HOST': config.get('database', 'DB_HOST'),
+        }
+    }

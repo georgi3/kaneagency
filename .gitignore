@@ -2,7 +2,6 @@ venv/
 .DS_Store
 .idea/*
 todos.py
-migrations/
 /static/
 emb/.env
 config.ini

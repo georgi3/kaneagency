@@ -159,7 +159,7 @@ REGULAR_EMAIL = config.get('email', 'REGULAR_EMAIL')
 
 # LOCAL SETTINGS
 # SECURITY WARNING: keep the secret key used in production secret!
-DEBUG = config.get('django', 'DEBUG')
+DEBUG = True if config.get('django', 'DEBUG') == 'True' else False
 if DEBUG:
     ALLOWED_HOSTS = []
     SECRET_KEY = 'slknflksdnfldnfls'

@@ -3,7 +3,7 @@ venv/
 .idea/*
 todos.py
 migrations/
-static/
+/static/
 emb/.env
 config.ini
 emb/local_settings.py

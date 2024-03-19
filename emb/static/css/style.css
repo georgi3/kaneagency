@@ -475,7 +475,7 @@ p + p {
     border-radius: 50px;
     color: #26272d;
     background-color: #fff;
-    padding: 0;
+    padding: 5px !important;
     transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
     -moz-transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
     -webkit-transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
@@ -1272,6 +1272,14 @@ a.twitter-bg {
 
 a.twitter-bg:hover {
     background-color: #55acee;
+}
+a.spotify-bg {
+    color: #1db954;
+    border-color: #1db954;
+}
+
+a.spotify-bg:hover {
+    background-color: #1ed760;
 }
 
 a.facebook-bg {

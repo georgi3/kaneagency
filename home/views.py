@@ -37,11 +37,11 @@ def about_us(request):
 def portfolio(request):
     portfolio_items = PortfolioItem.objects.filter(hide=False).order_by('-date')
     services = {item.service_category for item in portfolio_items}
-    content = Content.objects.filter(hide_info=False)
+    content = Content.objects.filter(hide_info=False).first()
     context = {
         'portfolio_items': portfolio_items,
         'unique_services': services,
-        'contents': content,
+        'content': content,
         'active_page': 'portfolio'
     }
     return render(request, 'home/portfolio.html', context)
@@ -50,11 +50,11 @@ def portfolio(request):
 def portfolio_item(request, pk):
     portfolio_item = get_list_or_404(PortfolioItem, id=pk, hide=False)
     related_projects = PortfolioItem.objects.filter(~Q(id=pk), service_category=portfolio_item[0].service_category)
-    content = Content.objects.filter(hide_info=False)
+    content = Content.objects.filter(hide_info=False).first()
     context = {
         'portfolio_item': portfolio_item,
         'related_projects': related_projects,
-        'contents': content,
+        'content': content,
         'active_page': 'portfolio'
     }
     return render(request, 'home/portfolio-item.html', context)
@@ -105,10 +105,10 @@ def services(request):
             request.session['filed_inquiry'] = prev_value + 1
 
     services = Services.objects.filter(hide=False)[::-1]
-    content = Content.objects.filter(hide_info=False)
+    content = Content.objects.filter(hide_info=False).first()
     context = {
         'services': services,
-        'contents': content,
+        'content': content,
         'active_page': 'services'
     }
     return render(request, 'home/services.html', context)

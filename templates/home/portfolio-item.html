@@ -77,10 +77,13 @@
                             {% if item.press_link %}
                                 <a href="{{ item.press_link }}" class="btn btn-border mb-10">Press Coverage</a>
                             {% endif %}
-                            {% if item.fb_link or item.ig_link or item.twitter_link or item.linkedin_link%}
+                            {% if item.fb_link or item.ig_link or item.twitter_link or item.linkedin_link or item.spotify_link%}
                                 <div class="project-date-category">
                                 <p><span>Social Media Coverage:</span></p>
                                     <div class="social-links">
+                                        {% if item.spotify_link %}
+                                        <a class="spotify-bg" href="{{ item.spotify }}"><i class="fa fa-spotify"></i></a>
+                                        {% endif %}
                                         {% if item.twitter_link %}
                                         <a class="twitter-bg" href="{{ item.twitter_link }}"><i class="fa fa-twitter"></i></a>
                                         {% endif %}

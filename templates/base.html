@@ -86,37 +86,29 @@
             <div class="row">
                 <div class="col-md-3 col-sm-4 col-xs-6">
                     <a href="{% url 'home:index' %}" class="site-title"><span>Kane</span>Agency</a>
-                    {% if contents %}
-                        {% for content in contents %}
-                            {% if content.footer_desc_par_1 %}
-                                <p>{{ content.footer_desc_par_1 }}</p>
-                            {% endif %}
-                            {% if content.footer_desc_par_2 %}
-                                <p>{{ content.footer_desc_par_2 }}</p>
-                            {% endif %}
-                        {% endfor %}
+                    {% if content.footer_desc_par_1 %}
+                        <p>{{ content.footer_desc_par_1 | safe }}</p>
+                    {% endif %}
+                    {% if content.footer_desc_par_2 %}
+                        <p>{{ content.footer_desc_par_2 | safe }}</p>
                     {% endif %}
                 </div>
                 <div class="col-lg-offset-4 col-md-3 col-sm-4 col-md-offset-2 col-sm-offset-0 col-xs-6 ">
-                    {% if contents %}
-                        {% for content in contents %}
-                            <h3>Keep in touch</h3>
-                            <ul class="list-unstyled contact-links">
-                                {% if content.email %}
-                                    <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:{{ content.email }}">{{ content.email }}</a></li>
-                                {% endif %}
-                                {% if content.phone_1 %}       {# +374 (00) 80 00 00 #}
-                                    <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{ content.phone_1 }}">{{ content.phone_1 }}</a></li>
-                                {% endif %}
-                                {% if content.phone_2 %}
-                                    <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{ content.phone_2 }}">{{ content.phone_2 }}</a></li>
-                                {% endif %}
-                                {% if content.address or content.city_country %}
-                                    <li><i class="fa fa-map-marker" aria-hidden="true"></i><p>{% if content.address %}{{ content.address }},{% endif %} {% if content.city_country %}{{ content.city_country }}{% endif %}</p></li>
-                                {% endif %}
-                            </ul>
-                        {% endfor %}
-                    {% endif %}
+                    <h3>Keep in touch</h3>
+                    <ul class="list-unstyled contact-links">
+                        {% if content.email %}
+                            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:{{ content.email }}">{{ content.email }}</a></li>
+                        {% endif %}
+                        {% if content.phone_1 %}       {# +374 (00) 80 00 00 #}
+                            <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{ content.phone_1 }}">{{ content.phone_1 }}</a></li>
+                        {% endif %}
+                        {% if content.phone_2 %}
+                            <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:{{ content.phone_2 }}">{{ content.phone_2 }}</a></li>
+                        {% endif %}
+                        {% if content.address or content.city_country %}
+                            <li><i class="fa fa-map-marker" aria-hidden="true"></i><p>{% if content.address %}{{ content.address }},{% endif %} {% if content.city_country %}{{ content.city_country }}{% endif %}</p></li>
+                        {% endif %}
+                    </ul>
                 </div>
                 <div class="clearfix visible-xs"></div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
@@ -141,28 +133,27 @@
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="social-links">
-                        {% if contents %}
-                            {% for content in contents %}
-                                {% if content.twitter_link %}
+                            {% if content.twitter_link %}
                                 <a class="twitter-bg" target="_blank" href="{{ content.twitter_link }}"><i class="fa fa-twitter"></i></a>
-                                {% endif %}
-                                {% if content.fb_link %}
+                            {% endif %}
+                            {% if content.spotify_link %}
+                                <a class="spotify-bg" target="_blank" href="{{ content.twitter_link }}"><i class="fa fa-spotify"></i></a>
+                            {% endif %}
+                            {% if content.fb_link %}
                                 <a class="facebook-bg" target="_blank" href="{{ content.fb_link }}"><i class="fa fa-facebook"></i></a>
-                                {% endif %}
-                                {% if content.ig_link %}
+                            {% endif %}
+                            {% if content.ig_link %}
                                 <a class="instagram" target="_blank" href="{{ content.ig_link }}"><i class="fa fa-instagram"></i></a>
-                                {% endif %}
-                                {% if content.linkedin_link %}
+                            {% endif %}
+                            {% if content.linkedin_link %}
                                 <a class="linkedin-bg" target="_blank" href="{{ content.linkedin_link }}"><i class="fa fa-linkedin"></i></a>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
+                            {% endif %}
                         </div><!-- /.social-links -->
                     </div>
                     <div class="col-xs-4">
                         <div class="text-right">
-                            <p>&copy; KaneAgency</p>
-                            <p>All Rights Reserved</p>
+                            <p>&copy; KaneAgency </p>
+                            <p>All Rights Reserved {{ year }}</p>
                         </div>
                     </div>
                 </div>
@@ -174,6 +165,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/bootstrap-select.min.js' %}"></script>

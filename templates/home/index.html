@@ -5,12 +5,8 @@
         <div class="hero-content">
             <div class="hero-text square">
                 <h1>K A N E</h1>
-                {% if contents %}
-                    {% for content in contents %}
-                        {% if content.intro_text %}
-                            <p>{{ content.intro_text | safe }}</p>
-                        {% endif %}
-                    {% endfor %}
+                {% if content.intro_text %}
+                    <p>{{ content.intro_text | safe }}</p>
                 {% endif %}
                 <a href="#services" class="btn btn-border">Learn more</a>
             </div><!-- /.hero-text -->
@@ -23,12 +19,8 @@
         <section class="site-section section-services gray-bg text-center" id="services">
             <div class="container">
                 <h2 class="heading-separator">Services</h2>
-                {% if contents %}
-                    {% for content in contents %}
-                        {% if content.services_text %}
-                            <p class="subheading-text">{{ content.services_text | safe}}</p>
-                        {% endif %}
-                    {% endfor %}
+                {% if content.services_text %}
+                    <p class="subheading-text">{{ content.services_text | safe}}</p>
                 {% endif %}
                 <div class="row">
                     {% if services %}
@@ -55,12 +47,8 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="heading-separator">Latest Projects</h2>
-                    {% if contents %}
-                        {% for content in contents %}
-                            {% if content.latest_projects_text %}
-                                <p class="subheading-text">{{ content.latest_projects_text | safe }}</p>
-                            {% endif %}
-                        {% endfor %}
+                    {% if content.latest_projects_text %}
+                        <p class="subheading-text">{{ content.latest_projects_text | safe }}</p>
                     {% endif %}
                 </div>
                 <div class="row">

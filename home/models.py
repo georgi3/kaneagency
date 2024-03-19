@@ -30,7 +30,7 @@ class Content(models.Model):
     ig_link = models.URLField('Instagram Link', help_text='Contact Info', blank=True, null=True)
     linkedin_link = models.URLField('LinkedIn Link', help_text='Contact Info', blank=True, null=True)
     footer_desc_par_1 = models.TextField('Footer Short Description 1', help_text='Paragraph 1, Max one sentence',
-                                         max_length=200, blank=True, null=True)
+                                         max_length=500, blank=True, null=True)
     hide_info = models.BooleanField('Hide all info', help_text='Hide all information', default=False)
 
     def __str__(self):

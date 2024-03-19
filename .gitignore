@@ -2,6 +2,8 @@ venv/
 .DS_Store
 .idea/*
 todos.py
+migrations/
+static/
 emb/.env
 emb/local_settings.py
 NOTES.md

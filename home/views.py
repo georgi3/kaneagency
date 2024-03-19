@@ -12,22 +12,25 @@ import pytz
 def index(request):
     services = Services.objects.filter(hide=False)
     portfolio_items = PortfolioItem.objects.filter(hide=False).order_by('-date')[:8]
-    content = Content.objects.filter(hide_info=False)
+    content = Content.objects.filter(hide_info=False).first()
+    year = datetime.datetime.now().year
     context = {
         'services': services,
         'portfolio_items': portfolio_items,
-        'contents': content,
-        'active_page': 'index'
+        'content': content,
+        'active_page': 'index',
+        'year': year
     }
     return render(request, 'home/index.html', context)
 
 
 def about_us(request):
-    content = Content.objects.filter(hide_info=False)
+    content = Content.objects.filter(hide_info=False).first()
     context = {
-        'contents': content,
+        'content': content,
         'active_page': 'about'
     }
+    print(content.about_par_1)
     return render(request, 'home/about_us.html', context)
 
 

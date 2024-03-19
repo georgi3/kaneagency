@@ -1,14 +1,13 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from tinymce.models import HTMLField
 
 
 class Content(models.Model):
     name = models.CharField('Name', max_length=7, default='Content', help_text='Leave it as it is.',
                             blank=True, null=True)
-    about_par_1 = models.TextField('About Info Paragraph 1', help_text='About page first paragraph',
-                                   blank=True, null=True)
-    about_par_2 = models.TextField('About Info Paragraph 2', help_text='About page second paragraph',
-                                   blank=True, null=True)
+    about_par_1 = HTMLField('About Info Paragraph 1', help_text='About page first paragraph',
+                                         blank=True, null=True)
     city_country = models.CharField('City, Country', max_length=50, help_text='City, Country (Address)',
                                     blank=True, null=True)
     address = models.CharField('Street Number, Name, other', max_length=75, blank=True, null=True)
@@ -26,13 +25,12 @@ class Content(models.Model):
     latest_projects_text = models.TextField('Text for latest projects', help_text="Text underneath 'Latest Projects'"
                                                                                   " (home page)", blank=True, null=True)
     twitter_link = models.URLField('Twitter Link', help_text='Contact info', null=True, blank=True)
+    spotify_link = models.URLField('Spotify Link', help_text='Contact info', null=True, blank=True)
     fb_link = models.URLField('Facebook Link', help_text='Contact Info', blank=True, null=True)
     ig_link = models.URLField('Instagram Link', help_text='Contact Info', blank=True, null=True)
     linkedin_link = models.URLField('LinkedIn Link', help_text='Contact Info', blank=True, null=True)
-    footer_desc_par_1 = models.CharField('Footer Short Description 1', help_text='Paragraph 1, Max one sentence',
-                                         max_length=150, blank=True, null=True)
-    footer_desc_par_2 = models.CharField('Footer Short Description 2', help_text='Paragraph 2, Max one sentence',
-                                         max_length=150, blank=True, null=True)
+    footer_desc_par_1 = models.TextField('Footer Short Description 1', help_text='Paragraph 1, Max one sentence',
+                                         max_length=200, blank=True, null=True)
     hide_info = models.BooleanField('Hide all info', help_text='Hide all information', default=False)
 
     def __str__(self):
@@ -70,7 +68,7 @@ class Services(models.Model):
     service_name = models.CharField('Service Name', primary_key=True, max_length=30,
                                     help_text='Name of the service you provide')
     short_description = models.CharField('Short Description', max_length=200, help_text='Short Description')
-    description = models.TextField('Description', help_text='Detailed Description')
+    description = HTMLField('Description', help_text='Detailed Description')
     icon = models.FileField('Icon', upload_to='photos/services/', help_text='MUST BE .SVG EXTENSIONS',
                             blank=False, null=False)
     main_img = models.ImageField('Main Img', upload_to='photos/services/')
@@ -89,13 +87,14 @@ class PortfolioItem(models.Model):
     date = models.DateField('Date of the Event', help_text='Date when the event took place', blank=True, null=True)
     service_category = models.ForeignKey(Services, max_length=30, help_text='Type of the service',
                                          on_delete=models.CASCADE)
-    description_1 = models.TextField('Description, Paragraph 1', help_text='Event Description')
-    description_2 = models.TextField('Description, Paragraph 2', help_text='Event Description', blank=True, null=True)
-    description_3 = models.TextField('Description, Paragraph 3', help_text='Event Description', blank=True, null=True)
+    description_1 = HTMLField('Description, Paragraph 1', help_text='Event Description')
+    description_2 = HTMLField('Description, Paragraph 2', help_text='Event Description', blank=True, null=True)
+    description_3 = HTMLField('Description, Paragraph 3', help_text='Event Description', blank=True, null=True)
     press_link = models.URLField('Press Link', help_text='Link for Press Article', blank=True, null=True)
     fb_link = models.URLField('Facebook Link', help_text='Facebook Link for More', blank=True, null=True)
     ig_link = models.URLField('Instagram Link', help_text='Instagram Link for More', blank=True, null=True)
     twitter_link = models.URLField('Twitter Link', help_text='Twitter Link for More', blank=True, null=True)
+    spotify_link = models.URLField('Spotify Link', help_text='Twitter Link for More', blank=True, null=True)
     linkedin_link = models.URLField('LinkedIn Link', help_text='LinkedInLink for More', blank=True, null=True)
     hide = models.BooleanField('Hide Item', help_text='Check to hide item', default=False)
     img_1 = models.ImageField(upload_to='photos/portfolio/', blank=True, null=True)

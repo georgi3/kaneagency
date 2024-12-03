@@ -163,10 +163,22 @@ DEBUG = True if config.get('django', 'DEBUG') == 'True' else False
 if DEBUG:
     ALLOWED_HOSTS = []
     SECRET_KEY = 'slknflksdnfldnfls'
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.sqlite3',
+    #         'NAME': BASE_DIR / 'db.sqlite3',
+    #     }
+    # }
+    # ssh -L 5433:localhost:5432 <vps-user>@<vps-public-ip>
+    # rsync -avz -e ssh <vps-user>@<vps-ip>:/path/to/media/ /local/path/to/media/
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'ENGINE': config.get('database', 'ENGINE'),
+            'NAME': config.get('database', 'DB_NAME'),
+            'USER': config.get('database', 'DB_USER'),
+            'PASSWORD': config.get('database', 'DB_PASSWORD'),
+            'HOST': config.get('database', 'DB_HOST'),
+            'PORT': '5432',
         }
     }
 else:

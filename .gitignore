@@ -13,4 +13,5 @@ NOTES.md
 *.pyc
 __pycache__
 db.sqlite3
+dbOld.sqlite3
 media

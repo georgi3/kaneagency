@@ -4,7 +4,7 @@
     <div id="hero" class="hero overlay">
         <div class="hero-content">
             <div class="hero-text square">
-                <h1>K A N E</h1>
+                <h1>K A N E &nbsp; T O W E R S</h1>
                 {% if content.intro_text %}
                     <p>{{ content.intro_text | safe }}</p>
                 {% endif %}
@@ -18,7 +18,7 @@
 
         <section class="site-section section-services gray-bg text-center" id="services">
             <div class="container">
-                <h2 class="heading-separator">Services</h2>
+                <h2 class="heading-separator">Solutions</h2>
                 {% if content.services_text %}
                     <p class="subheading-text">{{ content.services_text | safe}}</p>
                 {% endif %}
@@ -29,7 +29,7 @@
                             <div class="service">
                                 <a href="{% url 'home:services' %}#{{ service.service_name }}-id"><img src="{{ service.icon.url }}" alt="{{ service.service_name }} Icon"></a>
                                 <h3 class="service-title">{{ service.service_name }}</h3>
-                                <p class="service-info">{{ service.short_description }}</p>
+                                <p class="service-info">{{ service.short_description | safe }}</p>
                             </div>
                         </div>
                         {% endfor %}

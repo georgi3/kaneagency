@@ -4,10 +4,10 @@
     <div id="hero" class="hero overlay subpage-hero portfolio-hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Portfolio</h1>
+                <h1>Impact</h1>
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
-                  <li class="breadcrumb-item active">Portfolio</li>
+                  <li class="breadcrumb-item active">Impact</li>
                 </ol>
             </div><!-- /.hero-text -->
         </div><!-- /.hero-content -->
@@ -18,9 +18,9 @@
             <div class="container">
                 <ul class="portfolio-sorting list-inline text-center">
                 {% if unique_services %}
-                        <li><a href="#" class="btn btn-border mb-10 active" data-group="all">All</a></li>
+                        <li><a href="#" class="btn btn-border active" data-group="all">All</a></li>
                     {% for service in unique_services %}
-                        <li><a href="#" class="btn btn-border mb-10" data-group="{{ service }}">{{ service }}</a></li>
+                        <li><a href="#" class="btn btn-border" data-group="{{ service }}"><span class="px:5">{{ service }}</span></a></li>
                     {% endfor %}
                 {% endif %}
                 </ul><!-- /.portfolio-sorting  -->

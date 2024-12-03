@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Kane Agency</title>
+    <title>KTAgency</title>
 
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -51,7 +51,7 @@
         <nav id="primary-navigation" class="site-navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="{% url 'home:index' %}" class="site-title"><span>Kane</span>Agency</a>
+                    <a href="{% url 'home:index' %}" class="site-title"><span>KT</span>Agency</a>
                 </div><!-- /.navbar-header -->
                 <div class="collapse navbar-collapse" id="agency-navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -66,11 +66,11 @@
                         </li>
                         -->
                         <li {% if  active_page == 'about' %} class="active" {% endif %}>
-                            <a href="{% url 'home:about' %}">About</a></li>
+                            <a href="{% url 'home:about' %}">Our Story</a></li>
                         <li {% if  active_page == 'services' %} class="active" {% endif %}>
-                            <a href="{% url 'home:services' %}">Services</a></li>
+                            <a href="{% url 'home:services' %}">Our Solutions</a></li>
                         <li {% if  active_page == 'portfolio' %} class="active" {% endif %}
-                        ><a href="{% url 'home:portfolio' %}">Portfolio</a></li>
+                        ><a href="{% url 'home:portfolio' %}">Our Impact</a></li>
                         <li><a class="contact-header-link" href="#colophon">Contact</a></li>
                     </ul>
                 </div>
@@ -85,7 +85,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-4 col-xs-6">
-                    <a href="{% url 'home:index' %}" class="site-title"><span>Kane</span>Agency</a>
+                    <a href="{% url 'home:index' %}" class="site-title"><span>KT</span>Agency</a>
                     {% if content.footer_desc_par_1 %}
                         <p>{{ content.footer_desc_par_1 | safe }}</p>
                     {% endif %}
@@ -152,7 +152,7 @@
                     </div>
                     <div class="col-xs-4">
                         <div class="text-right">
-                            <p>&copy; KaneAgency </p>
+                            <p>&copy; KTAgency </p>
                             <p>All Rights Reserved {{ year }}</p>
                         </div>
                     </div>

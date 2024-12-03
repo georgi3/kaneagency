@@ -90,7 +90,7 @@ def services(request):
             send_mail(
                 subject='Please DO NOT Reply, Automated Email',
                 message='Thank you for submitting the form, our team will get back to you shortly. \nSincerely,'
-                        '\nKane Agency',
+                        '\nKTAgency',
                 from_email=EMAIL_HOST_USER,
                 recipient_list=[email],
                 fail_silently=False)

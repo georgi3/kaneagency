@@ -67,7 +67,7 @@ class Inquiry(models.Model):
 class Services(models.Model):
     service_name = models.CharField('Service Name', primary_key=True, max_length=30,
                                     help_text='Name of the service you provide')
-    short_description = models.CharField('Short Description', max_length=200, help_text='Short Description')
+    short_description = HTMLField('Short Description', help_text='Short Description')
     description = HTMLField('Description', help_text='Detailed Description')
     icon = models.FileField('Icon', upload_to='photos/services/', help_text='MUST BE .SVG EXTENSIONS',
                             blank=False, null=False)

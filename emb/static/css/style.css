@@ -468,14 +468,14 @@ p + p {
 /* Buttons */
 .btn {
     line-height: 50px;
-    min-width: 200px;
+    min-width: 69px;
     font-size: 16px;
     font-weight: 300;
     border: 0;
     border-radius: 50px;
     color: #26272d;
     background-color: #fff;
-    padding: 5px !important;
+    padding: 2px 15px;
     transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
     -moz-transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
     -webkit-transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
@@ -1349,7 +1349,7 @@ a.linkedin-bg:hover {
 
 .portfolio-sorting li a {
     line-height: 40px;
-    min-width: 120px;
+    /*min-width: 120px;*/
     font-size: 16px;
 }
 

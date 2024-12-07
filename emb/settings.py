@@ -169,7 +169,7 @@ if DEBUG:
     #         'NAME': BASE_DIR / 'db.sqlite3',
     #     }
     # }
-    # ssh -L 5433:localhost:5432 <vps-user>@<vps-public-ip>
+    # ssh -fN -L 5433:localhost:5432 <vps-user>@<vps-public-ip>
     # rsync -avz -e ssh <vps-user>@<vps-ip>:/path/to/media/ /local/path/to/media/
     DATABASES = {
         'default': {

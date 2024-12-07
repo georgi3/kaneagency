@@ -94,7 +94,6 @@ class PortfolioItem(models.Model):
     fb_link = models.URLField('Facebook Link', help_text='Facebook Link for More', blank=True, null=True)
     ig_link = models.URLField('Instagram Link', help_text='Instagram Link for More', blank=True, null=True)
     twitter_link = models.URLField('Twitter Link', help_text='Twitter Link for More', blank=True, null=True)
-    spotify_link = models.URLField('Spotify Link', help_text='Twitter Link for More', blank=True, null=True)
     linkedin_link = models.URLField('LinkedIn Link', help_text='LinkedInLink for More', blank=True, null=True)
     hide = models.BooleanField('Hide Item', help_text='Check to hide item', default=False)
     img_1 = models.ImageField(upload_to='photos/portfolio/', blank=True, null=True)

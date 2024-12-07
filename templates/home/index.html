@@ -4,7 +4,7 @@
     <div id="hero" class="hero overlay">
         <div class="hero-content">
             <div class="hero-text square">
-                <h1>K A N E &nbsp; T O W E R S</h1>
+                <h1>K A N E &nbsp; T O W E R</h1>
                 {% if content.intro_text %}
                     <p>{{ content.intro_text | safe }}</p>
                 {% endif %}
@@ -27,9 +27,15 @@
                         {% for service in services %}
                         <div class="col-md-3 col-xs-6">
                             <div class="service">
-                                <a href="{% url 'home:services' %}#{{ service.service_name }}-id"><img src="{{ service.icon.url }}" alt="{{ service.service_name }} Icon"></a>
+                                <div class="tw-flex tw-items-center tw-justify-center">
+                                    <a href="{% url 'home:services' %}#{{ service.service_name }}-id"><img src="{{ service.icon.url }}" alt="{{ service.service_name }} Icon"></a>
+                                </div>
                                 <h3 class="service-title">{{ service.service_name }}</h3>
-                                <p class="service-info">{{ service.short_description | safe }}</p>
+                                <div class="tw-flex tw-justify-center">
+                                    <div>
+                                        {{ service.short_description | safe }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         {% endfor %}
@@ -41,12 +47,10 @@
         <div class="parallax-kane-flip"></div>
 
 
-
-
         <section class="site-section section-portfolio">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="heading-separator">Latest Projects</h2>
+                    <h2 class="heading-separator">Our Impact</h2>
                     {% if content.latest_projects_text %}
                         <p class="subheading-text">{{ content.latest_projects_text | safe }}</p>
                     {% endif %}
@@ -68,6 +72,9 @@
                         {% endfor %}
                     {% endif %}
                 </div>
+            <div class="tw-flex tw-justify-center tw-items-center">
+                <a href="{% url 'home:portfolio' %}" class="btn btn-border tw-my-14">More Projects</a>
+            </div>
             </div>
         </section><!-- /.section-portfolio -->
         <div class="parallax-bline"></div>

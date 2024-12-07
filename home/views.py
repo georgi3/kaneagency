@@ -11,7 +11,7 @@ import pytz
 
 def index(request):
     services = Services.objects.filter(hide=False)
-    portfolio_items = PortfolioItem.objects.filter(hide=False).order_by('-date')[:8]
+    portfolio_items = PortfolioItem.objects.filter(hide=False).order_by('-date')[:4]
     content = Content.objects.filter(hide_info=False).first()
     year = datetime.datetime.now().year
     context = {

@@ -461,9 +461,9 @@ h1,h2,h3,h4,h5 {
     color: #26292c;
 }
 
-p + p {
-    margin-top: 40px;
-}
+/*p + p {*/
+/*    margin-top: 40px;*/
+/*}*/
 
 /* Buttons */
 .btn {
@@ -872,7 +872,7 @@ html, body {
 /* HERO
 ================================================== */
 .hero { 
-    background: url(../img/herof.jpeg) no-repeat center / cover;
+    background: url(../img/hero-service.jpeg) no-repeat center / cover;
     opacity: 90%;
     height: 100%;
     width: 100%;
@@ -990,11 +990,11 @@ html, body {
 }
 
 .portfolio-hero {
-    background: url(../img/hero-service.jpeg) no-repeat center / cover;
+    background: url(../img/herof.jpeg) no-repeat center / cover;
 }
 
 .service-hero {
-    background: url(../img/hero-service.jpeg) no-repeat center / cover;
+    background: url(../img/herof.jpeg) no-repeat center / cover;
 }
 
 .about-hero {

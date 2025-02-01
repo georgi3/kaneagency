@@ -13,7 +13,7 @@
         </div><!-- /.hero-content -->
     </div><!-- /.hero -->
 
-<div id="main" class="tw-bg-black tw-py-4">
+<div id="main" class="tw-bg-black tw-py-4 tw-pb-8">
     <div class="tw-py-8">
         <h1 class="tw-text-center tw-pt-2 tw-pb-4 tw-text-pretty tw-text-5xl tw-font-semibold tw-tracking-tight tw-text-white sm:tw-text-7xl">
             Who We Are
@@ -27,13 +27,28 @@
     </div>
 
     <div class="tw-flex tw-flex-wrap tw-py-10 tw-px-14">
+        <div class="tw-w-full lg:tw-w-1/2 tw-flex tw-items-center tw-justify-center">
+            <img src="{% static '/img/emilio.jpeg' %}" alt="About Us Image" 
+                class="tw-rounded-lg tw-shadow-lg tw-object-cover" style="max-width: 75%; height: auto;">
+        </div>
+        <div class="tw-w-full lg:tw-w-1/2 tw-px-6 tw-pb-10">
+            <div class="">
+                <h1 class="tw-py-6 tw-text-pretty tw-text-5xl tw-font-semibold tw-tracking-tight tw-text-white sm:tw-text-7xl">Meet Emilio</h1>
+                <p class="tw-py-6 tw-w-full tw-mt-8 tw-text-pretty tw-text-lg tw-font-medium tw-text-white sm:tw-text-xl/8">
+                    Born in Mexico City, Emilio’s entrepreneurial journey began while living in France, where he co-founded Heartbeat Ukraine, a venture that gained international recognition and support during the prestigious Cannes Film Festival. Inspired by its success and the potential to drive purposeful change, he expanded this vision by founding KaneTower, a derivative of KaneAgency, dedicated to fostering innovative projects that connect people and ideas with intention and impact.
+                </p>
+                <p class="tw-py-6 tw-mt-8 tw-text-pretty tw-text-lg tw-font-medium tw-text-white sm:tw-text-xl/8">
+                    Emilio’s expertise is built on a foundation of academic excellence and real-world experience. He holds a Master’s in Business with a focus on Entrepreneurship and Hospitality from Glion Institute of Higher Education in Switzerland. His achievements earned him the Professional Excellence Award and the honor of being selected as the Senior Ambassador and Speaker at his graduation ceremony. He also earned a bachelor’s degree in commerce from Concordia University in Montreal, equipping him with a unique blend of strategic insight and global perspective.
+                </p>
+            </div>
+        </div>
+    </div>
+        <div class="tw-flex tw-flex-wrap tw-py-10 tw-px-14">
         <!-- Image section -->
         <div class="tw-w-full lg:tw-w-1/2 tw-flex tw-items-center tw-justify-center tw-order-1 lg:tw-order-2">
             <img src="{% static '/img/sofia.jpg' %}" alt="About Us Image" 
-                class="tw-rounded-lg tw-shadow-lg tw-object-cover" 
-                style="max-width: 75%; height: auto;">
+                 class="tw-rounded-lg tw-shadow-lg tw-object-cover" style="max-width: 75%; height: auto;">
         </div>
-
         <!-- Text section -->
         <div class="tw-w-full lg:tw-w-1/2 tw-px-6 tw-pb-10 tw-order-2 lg:tw-order-1 ">
             <div class="">
@@ -43,26 +58,6 @@
                 </p>
                 <p class="tw-py-6 tw-mt-8 tw-text-pretty tw-text-lg tw-font-medium tw-text-white sm:tw-text-xl/8">
                     Her work is driven by a deep commitment to positive change – whether through transforming brands, driving innovative campaigns, or creating sustainable business practices. From developing PR strategies for iconic brands to spearheading green finance initiatives in Mexico, Sofía is all about creating solutions that not only drive business success but also contribute to a better world.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="tw-flex tw-flex-wrap tw-py-10 tw-px-14">
-        <div class="tw-w-full lg:tw-w-1/2 tw-flex tw-items-center tw-justify-center">
-            <img src="{% static '/img/emilio.jpeg' %}" alt="About Us Image" 
-                class="tw-rounded-lg tw-shadow-lg tw-object-cover" 
-                style="max-width: 75%; height: auto;">
-        </div>
-        
-        <div class="tw-w-full lg:tw-w-1/2 tw-px-6 tw-pb-10">
-            <div class="">
-                <h1 class="tw-py-6 tw-text-pretty tw-text-5xl tw-font-semibold tw-tracking-tight tw-text-white sm:tw-text-7xl">Meet Emilio</h1>
-                <p class="tw-py-6 tw-w-full tw-mt-8 tw-text-pretty tw-text-lg tw-font-medium tw-text-white sm:tw-text-xl/8">
-                    Born in Mexico City, Emilio’s entrepreneurial journey began while living in France, where he co-founded Heartbeat Ukraine, a venture that gained international recognition and support during the prestigious Cannes Film Festival. Inspired by its success and the potential to drive purposeful change, he expanded this vision by founding KaneTower, a derivative of KaneAgency, dedicated to fostering innovative projects that connect people and ideas with intention and impact.
-                </p>
-                <p class="tw-py-6 tw-mt-8 tw-text-pretty tw-text-lg tw-font-medium tw-text-white sm:tw-text-xl/8">
-                    Emilio’s expertise is built on a foundation of academic excellence and real-world experience. He holds a Master’s in Business with a focus on Entrepreneurship and Hospitality from Glion Institute of Higher Education in Switzerland. His achievements earned him the Professional Excellence Award and the honor of being selected as the Senior Ambassador and Speaker at his graduation ceremony. He also earned a bachelor’s degree in commerce from Concordia University in Montreal, equipping him with a unique blend of strategic insight and global perspective.
                 </p>
             </div>
         </div>
@@ -131,6 +126,9 @@
         </p>
     </div>
 </div>
+    <div class="tw-border-t tw-border-t-gray-700  md:tw-flex md:tw-items-center md:tw-justify-between">
+    
+    </div>
 
 
 {% endblock %}

@@ -119,8 +119,8 @@
                         <div class="column">
                             <div class="col-lg-3 col-md-4 col-xs-6">
                                 <div class="portfolio-item">
-                                    {% if project.img_1 %}
-                                        <img src="{{ project.img_1.url }}" class="img-res" alt="{{ project.title }} Image">
+                                    {% if project.front_image %}
+                                        <img src="{{ project.front_image.url }}" class="img-res" alt="{{ project.title }} Image">
                                     {% endif %}
                                     <h4 class="portfolio-item-title">{{ project.title }}</h4>
                                     <a href="{% url 'home:portfolio_item' pk=project.id %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>

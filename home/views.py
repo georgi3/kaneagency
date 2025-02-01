@@ -30,7 +30,6 @@ def about_us(request):
         'content': content,
         'active_page': 'about'
     }
-    print(content.about_par_1)
     return render(request, 'home/about_us.html', context)
 
 

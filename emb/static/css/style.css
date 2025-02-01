@@ -717,7 +717,13 @@ html, body {
     object-fit: cover;
     margin: 10px 0;
 }
-
+.img-portfolio-item {
+    display: block;
+    width: 100vw;
+    min-height: 100%;
+    object-fit: contain;
+    margin: 10px 0;
+}
 /* Background colors */
 .gray-bg {
   background-color: #f5f5f8;

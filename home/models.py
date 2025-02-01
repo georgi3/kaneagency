@@ -96,6 +96,7 @@ class PortfolioItem(models.Model):
     twitter_link = models.URLField('Twitter Link', help_text='Twitter Link for More', blank=True, null=True)
     linkedin_link = models.URLField('LinkedIn Link', help_text='LinkedInLink for More', blank=True, null=True)
     hide = models.BooleanField('Hide Item', help_text='Check to hide item', default=False)
+    front_image = models.ImageField('Front Image', help_text="Square Image", upload_to='photos/portfolio/', blank=False, null=True)
     img_1 = models.ImageField(upload_to='photos/portfolio/', blank=True, null=True)
     img_2 = models.ImageField(upload_to='photos/portfolio/', blank=True, null=True)
     img_3 = models.ImageField(upload_to='photos/portfolio/', blank=True, null=True)

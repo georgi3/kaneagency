@@ -48,7 +48,7 @@ def portfolio(request):
 
 def portfolio_item(request, pk):
     portfolio_item = get_list_or_404(PortfolioItem, id=pk, hide=False)
-    related_projects = PortfolioItem.objects.filter(~Q(id=pk), service_category=portfolio_item[0].service_category)
+    related_projects = PortfolioItem.objects.filter(~Q(id=pk), service_category=portfolio_item[0].service_category, hide=False)
     content = Content.objects.filter(hide_info=False).first()
     context = {
         'portfolio_item': portfolio_item,

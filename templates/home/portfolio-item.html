@@ -57,22 +57,22 @@
                         {% endif %}
                     </div>
                     <aside class="col-md-4">
-                        <div class="project-info">
+                        <div class="">
                             <h5>{{ item.title }}</h5>
-                            <div class="project-date-category">
+                            <div class="project-date-y">
                                 {% if item.date %}
                                     <p><span>Date:</span> {{ item.date }}</p>
                                 {% endif %}
                                 <p><span>Category:</span> {{ item.service_category }}</p>
                             </div>
                             {% if item.description_1 %}
-                                <p class="project-description">{{ item.description_1 | safe}}</p>
+                                <div class="">{{ item.description_1 | safe}}</div>
                             {% endif %}
                             {% if item.description_2 %}
-                                <p class="project-description">{{ item.description_2 | safe}}</p>
+                                <div class="">{{ item.description_2 | safe}}</div>
                             {% endif %}
                             {% if item.description_3 %}
-                                <p class="project-description">{{ item.description_3 | safe}}</p>
+                                <div class="">{{ item.description_3 | safe}}</div>
                             {% endif %}
                             {% if item.press_link %}
                                 <a href="{{ item.press_link }}" class="btn btn-border mb-10">Press Coverage</a>

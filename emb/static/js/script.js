@@ -56,7 +56,7 @@ $(function () {
     //shuffle.js
   var shuffleme = (function( $ ) {
     'use strict';
-        var $grid = $('#grid'), //locate what we want to sort 
+        var $grid = $('#grid'), //locate what we want to sort
         $filterOptions = $('.portfolio-sorting li'),  //locate the filter categories
 
     init = function() {
@@ -67,7 +67,8 @@ $(function () {
         setupFilters();
       }, 100);
 
-      $("#grid .col-md-4").slice(0, 4).show();
+      $("#grid .col-md-4").show();
+      // $("#grid .col-md-4").slice(0, 4).show();
 
       $("#loadMore").on('click', function(e) {
         e.preventDefault();
@@ -80,17 +81,17 @@ $(function () {
 
         if($("#grid .col-md-4:hidden").length == 0){
           $("#loadMore").addClass("disabled").html("No more to Load");
-        } 
+        }
       });
 
       // instantiate the plugin
       $grid.shuffle({
-        itemSelector: '[class*="col-"]', 
-         group: Shuffle.ALL_ITEMS, 
+        itemSelector: '[class*="col-"]',
+         group: Shuffle.ALL_ITEMS,
       });
     },
 
-      
+
     // Set up button clicks
     setupFilters = function() {
       var $btns = $filterOptions.children();
@@ -147,57 +148,35 @@ $(function () {
       setTimeout(function() {
         debouncedLayout();
       }, 500);
-    };      
+    };
 
     return {
       init: init
     };
   }( jQuery ));
 
-  if($('#grid').length >0 ) { 
+  if($('#grid').length >0 ) {
     shuffleme.init(); //filter portfolio
   };
+        document.addEventListener('DOMContentLoaded', () => {
+          if (window.innerWidth > 767) return;
 
-}());
+          const items = document.querySelectorAll('.portfolio-item');
+          const button = document.querySelector('#moreProjectsBtn');
 
-// GoogleMap
-if($('#map').length >0 ) {
-  var google;
-  function init() {
-      // Basic options for a simple Google Map
-      // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-      // var myLatlng = new google.maps.LatLng(40.71751, -73.990922);
-      var myLatlng = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
-
-      var mapOptions = {
-          // How zoomed in you want the map to start at (always required)
-          zoom: 7,
-          // The latitude and longitude to center the map (always required)
-          center: myLatlng,
-          // How you would like to style the map. 
-          scrollwheel: false,
-          styles: [{"featureType":"administrative.land_parcel","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"hue":"#f49935"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"hue":"#fad959"}]},{"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"hue":"#a1cdfc"},{"saturation":30},{"lightness":49}]}]
-      };
-
-      // Get the HTML DOM element that will contain your map 
-      // We are using a div with id="map" seen below in the <body>
-      var mapElement = document.getElementById('map');
-      // Create the Google Map using out element and options defined above
-      var map = new google.maps.Map(mapElement, mapOptions);
-      var addresses = ['Brooklyn'];
-      for (var x = 0; x < addresses.length; x++) {
-          $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
-              var p = data.results[0].geometry.location
-              var latlng = new google.maps.LatLng(p.lat, p.lng);
-              new google.maps.Marker({
-                  position: latlng,
-                  map: map,
-                  icon: 'images/loc.png'
-              });
-
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('slide-up-on-scroll');
+              observer.unobserve(entry.target);
+            }
           });
-      }
-      
-  }
-  google.maps.event.addDomListener(window, 'load', init);
-}
+        }, {
+          threshold: 0,
+          rootMargin: '0px 0px 600px 0px' // triggers 100px before item enters viewport
+        });
+
+          items.forEach(item => observer.observe(item));
+          if (button) observer.observe(button);
+        });
+}());

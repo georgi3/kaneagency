@@ -28,21 +28,27 @@
                     {% if portfolio_items %}
                         {% for portfolio_item in portfolio_items %}
                             <div class="col-lg-3 col-md-4 col-xs-6" data-groups='["{{ portfolio_item.service_category }}"]'>
-                                <div class="portfolio-item">
+                                <div class="portfolio-item animate-on-scroll-init tw-relative">
                                     {% if portfolio_item.front_image %}
                                         <img src="{{ portfolio_item.front_image.url }}" class="img-res"
                                          alt="{{ portfolio_item.title }} Image">
                                     {% endif %}
-                                    <h4 class="portfolio-item-title">{{ portfolio_item.title }}</h4>
-                                    <a href="{% url 'home:portfolio_item' pk=portfolio_item.id %}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                    <div class="tw-absolute tw-bottom-2 tw-right-2 sm:tw-hidden tw-bg-black tw-bg-opacity-25 tw-p-4 tw-rounded-xl">
+                                        <a href="{% url 'home:portfolio_item' pk=portfolio_item.id %}" class="tw-text-white">
+                                            {{ portfolio_item.title }} <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <h4 class="portfolio-item-title tw-hidden sm:tw-block">{{ portfolio_item.title }}</h4>
+                                    <a class="tw-hidden sm:tw-block" href="{% url 'home:portfolio_item' pk=portfolio_item.id %}">
+                                        <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                                 </div><!-- /.portfolio-item -->
                             </div>
                         {% endfor %}
                     {% endif %}
                 </div>
-                <div class="text-center">
-                    <a class="btn btn-border mb-10" href="#" id="loadMore">Load More</a>
-                </div>
+{#                <div class="text-center">#}
+{#                    <a class="btn btn-border mb-10" href="#" id="loadMore">Load More</a>#}
+{#                </div>#}
             </div>
         </section><!-- /.section-portfolio -->
     </main><!-- /#main -->

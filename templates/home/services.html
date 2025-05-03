@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <br>
+{#    <br>#}
     <main id="main" class="site-main">
         {% if services %}
             {% for service in services %}
@@ -23,7 +23,7 @@
                     {% else %}
                         <article class="flex-columns flex-reverse">
                     {% endif %}
-                        <div class="row">
+                        <div class="row !tw-mx-0">
                               <div class="column">
                                     <div class="column-1">
                                         <img src="{{ service.main_img.url }}" alt="{{ service.service_name }} Image" />
@@ -31,7 +31,7 @@
                               </div>
                               <div class="column">
                                     <div class="column-2 bg-light">
-                                          <h2 class="mt-50">{{ service.service_name }}</h2>
+                                          <h2 class="mt-50 didot-font">{{ service.service_name }}</h2>
                                           <p class="service-description">{{ service.description | safe}}</p>
                                           <a href="#inquiry_form"
     {#                                         ?service={{ service.service_name }}#}

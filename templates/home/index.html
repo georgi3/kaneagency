@@ -25,13 +25,15 @@
                 <div class="row">
                     {% if services %}
                         {% for service in services %}
-                        <div class="col-md-3 col-xs-6">
+                        <div class="col-md-3 col-xs-6 !tw-px-0 sm:tw-px-4">
                             <div class="service">
                                 <div class="tw-flex tw-items-center tw-justify-center">
                                     <a href="{% url 'home:services' %}#{{ service.service_name }}-id"><img src="{{ service.icon.url }}" alt="{{ service.service_name }} Icon"></a>
                                 </div>
-                                <h3 class="service-title">{{ service.service_name }}</h3>
-                                <div class="tw-flex tw-justify-center">
+                                <a href="{% url 'home:services' %}#{{ service.service_name }}-id">
+                                <h3 class="service-title didot-font !tw-font-bold tw-underline sm:tw-no-underline">{{ service.service_name }}</h3>
+                                </a>
+                                <div class="tw-flex tw-justify-center tw-mt-8">
                                     <div>
                                         {{ service.short_description | safe }}
                                     </div>
@@ -59,25 +61,32 @@
                     {% if portfolio_items %}
                         {% for portfolio_item in portfolio_items %}
                             <div class="col-lg-3 col-md-4 col-xs-6">
-                                <div class="portfolio-item">
+                                <div class="portfolio-item animate-on-scroll-init tw-relative">
                                     {% if portfolio_item.front_image %}
                                         <img src="{{ portfolio_item.front_image.url }}" class="img-res"
                                          alt="{{ portfolio_item.title }} Image">
                                     {% endif %}
-                                    <h4 class="portfolio-item-title">{{ portfolio_item.title }}</h4>
-                                    <a href="{% url 'home:portfolio_item' pk=portfolio_item.id %}">
+                                    <div class="tw-absolute tw-bottom-2 tw-right-2 sm:tw-hidden tw-bg-black tw-bg-opacity-25 tw-p-4 tw-rounded-xl">
+                                        <a href="{% url 'home:portfolio_item' pk=portfolio_item.id %}" class="tw-text-white">
+                                            {{ portfolio_item.title }} <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <h4 class="portfolio-item-title tw-hidden sm:tw-block">{{ portfolio_item.title }}</h4>
+                                    <a class="tw-hidden sm:tw-block" href="{% url 'home:portfolio_item' pk=portfolio_item.id %}">
                                         <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                                 </div><!-- /.portfolio-item -->
                             </div>
                         {% endfor %}
                     {% endif %}
                 </div>
-            <div class="tw-flex tw-justify-center tw-items-center">
-                <a href="{% url 'home:portfolio' %}" class="btn btn-border tw-my-14">More Projects</a>
+            <div class="tw-flex tw-justify-center tw-items-center" >
+                <a href="{% url 'home:portfolio' %}" id="moreProjectsBtn"  class="btn btn-border tw-my-14 animate-on-scroll-init">More Projects</a>
             </div>
             </div>
         </section><!-- /.section-portfolio -->
         <div class="parallax-bline"></div>
 
     </main><!-- /#main -->
+{#    <script>#}
+{#    </script>#}
 {% endblock %}

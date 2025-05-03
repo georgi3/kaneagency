@@ -73,7 +73,7 @@
                             <a href="{% url 'home:services' %}">Our Solutions</a></li>
                         <li {% if  active_page == 'portfolio' %} class="active" {% endif %}
                         ><a href="{% url 'home:portfolio' %}">Our Impact</a></li>
-                        <li><a class="contact-header-link" href="#contact">Contact</a></li>
+                        <li><a class="contact-header-link" href="{% url 'home:services' %}#inquiry_form">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -108,7 +108,7 @@
 {#                    </address>#}
 {#                </div>#}
                 <div id="contact">
-                    <h3 class="tw-border-l tw-border-indigo-600 tw-pl-6 tw-font-semibold tw-text-white">Contact Info</h3>
+                    <h3 class="tw-border-l tw-border-indigo-600 tw-pl-6 tw-font-semibold tw-text-white didot-font">Contact Info</h3>
                     <div  class="tw-text-white tw-border-l tw-border-gray-200 tw-pl-6">
                         <p class="tw-flex tw-flex-row tw-justify-between">
                             <span class="tw-px-2">Email: </span>

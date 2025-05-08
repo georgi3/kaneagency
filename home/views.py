@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, get_list_or_404, redirect
 from .models import PortfolioItem, Services, Inquiry, Content
 from django.db.models import Q
 from django.contrib import messages
@@ -61,8 +61,11 @@ def portfolio_item(request, pk):
 
 def services(request):
     if request.method == 'POST':
-        if int(request.session.get('filed_inquiry', 0)) >= 3:
+        honey_pot = request.POST.get('email_confirm')
+        if int(request.session.get('filed_inquiry', 0)) >= 1:
             messages.error(request, 'You have already submitted an inquiry! For more, please, reach out via e-mail.')
+        elif honey_pot:
+            return redirect('services')  # silently drop spam
         else:
             inquiry_date = datetime.datetime.now(pytz.timezone('US/Eastern'))
             name = request.POST.get('name')
@@ -74,16 +77,6 @@ def services(request):
             inquiry = Inquiry(inquiry_date=inquiry_date, name=name, email=email, subject=subject,
                               service=service, budget=budget, message=message)
             inquiry.save()
-            # with smtplib.SMTP_SSL('mail.privateemail.com', 465) as connection:
-            #     print('Logging in...')
-            #     connection.login('embaston@embaston.com', 'Embaston3434!emg')
-            #     print('Logged in')
-            #     connection.sendmail(
-            #         from_addr='embaston@embaston.com',
-            #         to_addrs=email,
-            #         msg=message
-            #     )
-            #
             mail_message = f"FROM: {name} <{email}>\nSUBJECT: {subject}\nSERVICE: {service}\nBUDGET: " \
                            f"{budget if budget else 'N/A'}\nMESSAGE: {message}"
             send_mail(
